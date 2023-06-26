@@ -95,6 +95,5 @@ public class PlayerStatistics extends BaseModel<PlayerStatistics>{
     public void setGameRating(int gameRating) {
         this.gameRating = gameRating;
     }
-    
-    
+
 }
