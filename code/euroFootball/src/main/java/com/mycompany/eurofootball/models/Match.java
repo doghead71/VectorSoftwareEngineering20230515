@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Kraine
  */
-public class Match extends BaseModel{
+public class Match extends BaseModel<Match>{
     private League league;
     private FootballTeam homeTeam;
     private FootballTeam awayTeam;
@@ -21,13 +21,12 @@ public class Match extends BaseModel{
     private int homeTeamScore;
 
     @Override
-    public BaseModel deepClone() {
+    public Match deepClone () {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 //    constructor
 
-    public Match(League league, FootballTeam homeTeam, FootballTeam awayTeam, LocalDate matchTime, int matchWeek, int awayTeamScore, int homeTeamScore) {
+    public Match(League league, FootballTeam homeTeam, FootballTeam awayTeam, Date matchTime, int matchWeek, int awayTeamScore, int homeTeamScore) {
         this.league = league;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
@@ -36,8 +35,7 @@ public class Match extends BaseModel{
         this.awayTeamScore = awayTeamScore;
         this.homeTeamScore = homeTeamScore;
     }
-    
-    
+
 //    getters and setters
 
     public League getLeague() {
@@ -64,11 +62,11 @@ public class Match extends BaseModel{
         this.awayTeam = awayTeam;
     }
 
-    public LocalDate getMatchTime() {
+    public Date getMatchTime() {
         return matchTime;
     }
 
-    public void setMatchTime(LocalDate matchTime) {
+    public void setMatchTime(Date matchTime) {
         this.matchTime = matchTime;
     }
 
@@ -95,6 +93,4 @@ public class Match extends BaseModel{
     public void setHomeTeamScore(int homeTeamScore) {
         this.homeTeamScore = homeTeamScore;
     }
-    
-    
 }
