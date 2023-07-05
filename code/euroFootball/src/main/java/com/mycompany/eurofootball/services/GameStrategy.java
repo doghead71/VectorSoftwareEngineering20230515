@@ -12,7 +12,7 @@ import com.mycompany.eurofootball.models.TeamStatistics;
  * @author calmin
  */
 public interface GameStrategy {
-    
+
     public void playGame (Match match);
-    
+
 }

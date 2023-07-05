@@ -20,13 +20,11 @@ public class EuroFootball {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
-        
         //sample game flow
         MatchGenerator matchGenerator = MatchGeneratorFactory.getMatchGenerator();
         Match match = matchGenerator.generateMatch();
         GameStrategy gameStrategy = GameStrategyFactory.getGameStrategy();
         gameStrategy.playGame(match);
-        
-        
+
     }
 }

@@ -11,7 +11,7 @@ import com.mycompany.eurofootball.models.Match;
  * @author calmin
  */
 public interface MatchGenerator {
-    
+
     public Match generateMatch();
-    
+
 }
