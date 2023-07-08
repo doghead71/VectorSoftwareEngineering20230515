@@ -15,6 +15,7 @@ package com.mycompany.eurofootball.models;
 public class League extends BaseModel<League>{
    
     private String name;
+    privat int season;
     
 
     @Override
@@ -24,8 +25,9 @@ public class League extends BaseModel<League>{
     
 //    constructor
 
-    public League(String name) {
+    public League(String name, int season) {
         this.name = name;
+        this.season = season;
     }
     
 //    getter and setter
@@ -37,5 +39,14 @@ public class League extends BaseModel<League>{
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getSeason() {
+        return season;
+    }
+
+    public void setSeason(int season) {
+        this.season = season;
+    }
+    
     
 }

@@ -19,6 +19,13 @@ public class Footballer extends BaseModel<Footballer>{
     private Boolean isSuspended;
     private String position;
     private int playerRating;
+    private int bookingsLeft;
+    private double passing;
+    private double shooting;
+    private double tackling;
+    private double defDiscipline;
+    private double goalkeeping;
+
     
 
     @Override
@@ -29,7 +36,7 @@ public class Footballer extends BaseModel<Footballer>{
     
 //    constructor
 
-    public Footballer(String firstName, String lastName, Date dateOfBirth, Boolean isInjured, Boolean isSuspended, String position, int playerRating) {
+    public Footballer(String firstName, String lastName, Date dateOfBirth, Boolean isInjured, Boolean isSuspended, String position, int playerRating, int bookingsLeft, double passing, double shooting, double tackling, double defDiscipline, double goalkeeping) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -37,8 +44,14 @@ public class Footballer extends BaseModel<Footballer>{
         this.isSuspended = isSuspended;
         this.position = position;
         this.playerRating = playerRating;
+        this.bookingsLeft = bookingsLeft;
+        this.passing = passing;
+        this.shooting = shooting;
+        this.tackling = tackling;
+        this.defDiscipline = defDiscipline;
+        this.goalkeeping = goalkeeping;
     }
-    
+
     
 //    getters and setters
 
@@ -96,6 +109,56 @@ public class Footballer extends BaseModel<Footballer>{
 
     public void setPlayerRating(int playerRating) {
         this.playerRating = playerRating;
+    }
+
+    
+
+    public int getBookingsLeft() {
+        return bookingsLeft;
+    }
+
+    public void setBookingsLeft(int bookingsLeft) {
+        this.bookingsLeft = bookingsLeft;
+    }
+
+    public double getPassing() {
+        return passing;
+    }
+
+    public void setPassing(double passing) {
+        this.passing = passing;
+    }
+
+    public double getShooting() {
+        return shooting;
+    }
+
+    public void setShooting(double shooting) {
+        this.shooting = shooting;
+    }
+
+    public double getTackling() {
+        return tackling;
+    }
+
+    public void setTackling(double tackling) {
+        this.tackling = tackling;
+    }
+
+    public double getDefDiscipline() {
+        return defDiscipline;
+    }
+
+    public void setDefDiscipline(double defDiscipline) {
+        this.defDiscipline = defDiscipline;
+    }
+
+    public double getGoalkeeping() {
+        return goalkeeping;
+    }
+
+    public void setGoalkeeping(double goalkeeping) {
+        this.goalkeeping = goalkeeping;
     }
     
     

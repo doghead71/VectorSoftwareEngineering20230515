@@ -14,6 +14,9 @@ public class FootballTeam extends BaseModel<FootballTeam>{
     private String homeStadium;
     private User user;
     private League league;
+    private double attack;
+    private double defense;
+    private double teamRating;
 
     @Override
     public FootballTeam deepClone() {
@@ -22,12 +25,17 @@ public class FootballTeam extends BaseModel<FootballTeam>{
 
 //    contructors
 
-    public FootballTeam(Long universalIdentifier,String name, String homeStadium, User user) {
-        
+    public FootballTeam(String name, String homeStadium, User user, League league, double attack, double defense, double teamRating) {
         this.name = name;
         this.homeStadium = homeStadium;
         this.user = user;
+        this.league = league;
+        this.attack = attack;
+        this.defense = defense;
+        this.teamRating = teamRating;
     }
+
+    
     
 //    getters and setters
 
@@ -61,6 +69,30 @@ public class FootballTeam extends BaseModel<FootballTeam>{
 
     public void setLeague(League league) {
         this.league = league;
+    }
+
+    public double getAttack() {
+        return attack;
+    }
+
+    public void setAttack(double attack) {
+        this.attack = attack;
+    }
+
+    public double getDefense() {
+        return defense;
+    }
+
+    public void setDefense(double defense) {
+        this.defense = defense;
+    }
+
+    public double getTeamRating() {
+        return teamRating;
+    }
+
+    public void setTeamRating(double teamRating) {
+        this.teamRating = teamRating;
     }
     
     

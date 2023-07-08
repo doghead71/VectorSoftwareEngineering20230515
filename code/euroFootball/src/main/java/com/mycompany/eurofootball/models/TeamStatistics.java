@@ -17,10 +17,15 @@ public class TeamStatistics {
     private int win;
     private int loss;
     private int draw;
+    private double possession;
+    private int shots;
+    private int shotsOnTarget;
+    private int clearChances;
+    private double expectedGoals;
     
 //    constructor
 
-    public TeamStatistics(League league, FootballTeam team, int goalsScored, int GoalsConceded, int win, int loss, int draw) {
+    public TeamStatistics(League league, FootballTeam team, int goalsScored, int GoalsConceded, int win, int loss, int draw, double possession, int shots, int shotsOnTarget, int clearChances, double expectedGoals) {
         this.league = league;
         this.team = team;
         this.goalsScored = goalsScored;
@@ -28,7 +33,14 @@ public class TeamStatistics {
         this.win = win;
         this.loss = loss;
         this.draw = draw;
+        this.possession = possession;
+        this.shots = shots;
+        this.shotsOnTarget = shotsOnTarget;
+        this.clearChances = clearChances;
+        this.expectedGoals = expectedGoals;
     }
+
+    
     
     
 //    getters and setters
@@ -87,6 +99,46 @@ public class TeamStatistics {
 
     public void setDraw(int draw) {
         this.draw = draw;
+    }
+
+    public double getPossession() {
+        return possession;
+    }
+
+    public void setPossession(double possession) {
+        this.possession = possession;
+    }
+
+    public int getShots() {
+        return shots;
+    }
+
+    public void setShots(int shots) {
+        this.shots = shots;
+    }
+
+    public int getShotsOnTarget() {
+        return shotsOnTarget;
+    }
+
+    public void setShotsOnTarget(int shotsOnTarget) {
+        this.shotsOnTarget = shotsOnTarget;
+    }
+
+    public int getClearChances() {
+        return clearChances;
+    }
+
+    public void setClearChances(int clearChances) {
+        this.clearChances = clearChances;
+    }
+
+    public double getExpectedGoals() {
+        return expectedGoals;
+    }
+
+    public void setExpectedGoals(double expectedGoals) {
+        this.expectedGoals = expectedGoals;
     }
     
     
