@@ -10,7 +10,7 @@ import com.mycompany.eurofootball.models.Match;
  *
  * @author calmin
  */
-public class PositionBasedGameStrategyImpl implements GameStrategy {
+public class PossessionBasedGameStrategyImpl implements GameStrategy {
 
     @Override
     public void playGame(Match match) {

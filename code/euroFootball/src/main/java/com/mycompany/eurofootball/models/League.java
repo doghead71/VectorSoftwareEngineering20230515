@@ -15,7 +15,7 @@ package com.mycompany.eurofootball.models;
 public class League extends BaseModel<League>{
    
     private String name;
-    privat int season;
+    private int season;
     
 
     @Override

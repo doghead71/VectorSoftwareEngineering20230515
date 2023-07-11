@@ -17,7 +17,7 @@ public class GameStrategyFactory {
         int randomNumber = 0;
         GameStrategy gameStrategy = null;
         switch(randomNumber){
-            case 0: gameStrategy = new PositionBasedGameStrategyImpl();
+            case 0: gameStrategy = new PossessionBasedGameStrategyImpl();
             case 1: gameStrategy =  new PriorHeadResultsGameStrategyImpl();
             case 2: gameStrategy =  new LeaguePositionStrategyImpl();
         }
