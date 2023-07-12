@@ -12,18 +12,35 @@ public class PasswordValidatorImpl implements PasswordValidator {
     @Override
     public boolean validatePassword(String password){
         
+        if(password == null)
+            return false;
+
         if (!hasNumber(password)){
             return false;
         }
-        
+
         if (!hasCapitalLetter(password)){
+            return false;
+        }
+        
+        if (password.length() < 8){
+            return false;
+        }
+        
+        if(hasSpace(password)){
+            return false;
+        }
+        
+        if(!hasSpecialCharacter(password)){
             return false;
         }
         
         return true;
     }
-        private boolean hasNumber(String password){
-           char[] chars = password.toCharArray();
+    
+    
+    private boolean hasNumber(String password){
+        //    char[] chars = password.toCharArray();
            for (char c : password.toCharArray()) {
             if (Character.isDigit(c)) {
                 return true;
@@ -33,12 +50,30 @@ public class PasswordValidatorImpl implements PasswordValidator {
 
     }
         
-        private boolean hasCapitalLetter(String password){
+    private boolean hasCapitalLetter(String password){
             for (char c:password.toCharArray()){
                 if (Character.isUpperCase(c)) {
                  return true;
                 }
             }
             return false;
+    }
+        
+        private boolean hasSpace(String password) {
+            for (char c : password.toCharArray()) {
+                if (Character.isWhitespace(c)) {
+                   return true;
+                }
+            }
+            return false;
         }
+        
+        private boolean hasSpecialCharacter(String password) {
+        for (char c : password.toCharArray()) {
+            if (!Character.isWhitespace(c) && !Character.isLetterOrDigit(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

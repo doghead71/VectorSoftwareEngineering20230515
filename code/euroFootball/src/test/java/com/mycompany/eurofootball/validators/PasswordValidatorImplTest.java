@@ -15,11 +15,11 @@ import static org.junit.Assert.*;
  *
  * @author  ackmine
  */
-public class passwordValidatorImplTest {
+public class PasswordValidatorImplTest {
 
     private PasswordValidator validator;
 
-    public passwordValidatorImplTest() {
+    public PasswordValidatorImplTest() {
     }
 
     @org.junit.BeforeClass
@@ -32,7 +32,7 @@ public class passwordValidatorImplTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        validator = new passwordValidatorImpl();
+        validator = new PasswordValidatorImpl();
     }
 
     @org.junit.After
@@ -48,7 +48,7 @@ public class passwordValidatorImplTest {
 
     @org.junit.Test
     public void testInvalidLength() {
-        String password = "Pass@123";
+        String password = "Pass@12";
         boolean output = validator.validatePassword(password);
         assertFalse(output);
     }
