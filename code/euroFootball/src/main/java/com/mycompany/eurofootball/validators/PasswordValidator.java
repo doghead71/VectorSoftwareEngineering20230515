@@ -9,5 +9,8 @@ package com.mycompany.eurofootball.validators;
  * @author Bryan Scarlet
  */
 public interface PasswordValidator {
+   
+    
+    boolean validatePassword (String password);
     
 }
