@@ -25,7 +25,9 @@ public class UsernameValidatorImpl implements UsernameValidator {
             return false; 
         }
         
-
+        if (!hasSpecialCharacter(username)){
+            return false; 
+        }
         return true;
     }
 
@@ -38,9 +40,18 @@ public class UsernameValidatorImpl implements UsernameValidator {
         return false;
     }
     
-    private boolean hasCapitalLetterAsWell(String username){
-        String lowercase = username.toLowerCase();
-        return lowercase.compareTo(username) != 0;
+    // private boolean hasCapitalLetterAsWell(String username){
+    //     String lowercase = username.toLowerCase();
+    //     return lowercase.compareTo(username) != 0;
+    // }
+
+    private boolean hasSpecialCharacter(String username) {
+        for (char c : username.toCharArray()) {
+            if (!Character.isWhitespace(c) && !Character.isDigit(c) && !Character.isLetter(c)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
