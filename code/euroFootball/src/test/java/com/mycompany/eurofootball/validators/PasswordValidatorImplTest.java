@@ -15,11 +15,11 @@ import static org.junit.Assert.*;
  *
  * @author  ackmine
  */
-public class PasswordValidatorImplTest {
+public class passwordValidatorImplTest {
 
     private PasswordValidator validator;
 
-    public PasswordValidatorImplTest() {
+    public passwordValidatorImplTest() {
     }
 
     @org.junit.BeforeClass
@@ -32,7 +32,7 @@ public class PasswordValidatorImplTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        validator = new PasswordValidatorImpl();
+        validator = new passwordValidatorImpl();
     }
 
     @org.junit.After
@@ -41,43 +41,43 @@ public class PasswordValidatorImplTest {
 
     @org.junit.Test
     public void testValidPassword() {
-        String Password = "Password@123";
-        boolean output = validator.validatePassword(Password);
+        String password = "Password@123";
+        boolean output = validator.validatePassword(password);
         assertTrue(output);
     }
 
     @org.junit.Test
     public void testInvalidLength() {
-        String Password = "Pass@123";
-        boolean output = validator.validatePassword(Password);
+        String password = "Pass@123";
+        boolean output = validator.validatePassword(password);
         assertFalse(output);
     }
 
     @org.junit.Test
     public void testInvalidHasSpace() {
-        String Password = "Pass word@123";
-        boolean output = validator.validatePassword(Password);
+        String password = "Pass word@123";
+        boolean output = validator.validatePassword(password);
         assertFalse(output);
     }
 
     @org.junit.Test
     public void testInvalidNoNumbers() {
-        String Password = "Password@";
-        boolean output = validator.validatePassword(Password);
+        String password = "Password@";
+        boolean output = validator.validatePassword(password);
         assertFalse(output);
     }
 
     @org.junit.Test
     public void testInvalidNoSpecialCharacters() {
-        String Password = "Password123";
-        boolean output = validator.validatePassword(Password);
+        String password = "Password123";
+        boolean output = validator.validatePassword(password);
         assertFalse(output);
     }
 
     @org.junit.Test
     public void testNullString() {
-        String Password = null;
-        boolean output = validator.validatePassword(Password);
+        String password = null;
+        boolean output = validator.validatePassword(password);
         assertFalse(output);
     }
 
