@@ -10,7 +10,15 @@ package com.mycompany.eurofootball.validators;
  */
 public class PasswordValidatorImpl implements PasswordValidator {
     @Override
-    private boolean hasNumber(String password){
+    public boolean validatePassword(String password){
+        
+        if (!hasNumber(password)){
+            return false;
+        }
+        
+        return true;
+    }
+        private boolean hasNumber(String password){
            char[] chars = password.toCharArray();
            for (char c : password.toCharArray()) {
             if (Character.isDigit(c)) {

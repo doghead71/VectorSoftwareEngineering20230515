@@ -10,4 +10,6 @@ package com.mycompany.eurofootball.validators;
  */
 public interface PasswordValidator {
     
+    boolean validatePassword(String password);
+    
 }
