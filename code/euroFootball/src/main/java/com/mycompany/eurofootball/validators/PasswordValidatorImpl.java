@@ -16,6 +16,10 @@ public class PasswordValidatorImpl implements PasswordValidator {
             return false;
         }
         
+        if (!hasCapitalLetter(password)){
+            return false;
+        }
+        
         return true;
     }
         private boolean hasNumber(String password){
@@ -28,4 +32,13 @@ public class PasswordValidatorImpl implements PasswordValidator {
         return false;
 
     }
+        
+        private boolean hasCapitalLetter(String password){
+            for (char c:password.toCharArray()){
+                if (Character.isUpperCase(c)) {
+                 return true;
+                }
+            }
+            return false;
+        }
 }
