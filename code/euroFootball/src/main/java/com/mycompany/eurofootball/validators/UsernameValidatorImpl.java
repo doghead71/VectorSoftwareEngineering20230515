@@ -4,7 +4,6 @@
  */
 package com.mycompany.eurofootball.validators;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 
 /**
  *

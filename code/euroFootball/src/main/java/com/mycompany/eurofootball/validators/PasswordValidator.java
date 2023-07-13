@@ -13,6 +13,4 @@ public interface PasswordValidator {
     
     boolean validatePassword (String password);
     
-    boolean validatePassword(String password);
-    
 }
