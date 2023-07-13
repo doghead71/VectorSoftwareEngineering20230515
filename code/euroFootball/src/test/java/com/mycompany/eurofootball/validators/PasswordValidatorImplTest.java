@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  */
 public class PasswordValidatorImplTest {
 
-    private PasswordValidator validator;
+    protected PasswordValidator validator;
 
     public PasswordValidatorImplTest() {
     }
@@ -32,8 +32,13 @@ public class PasswordValidatorImplTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
+        getPasswordVallidaator();
+    }
+
+    protected void getPasswordVallidaator() {
         validator = new PasswordValidatorImpl();
     }
+    
 
     @org.junit.After
     public void tearDown() throws Exception {
