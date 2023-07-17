@@ -18,6 +18,11 @@ import static org.junit.Assert.*;
 public class PasswordValidatorImplTest {
 
     protected PasswordValidator validator;
+    
+    protected void getPasswordValidaator() {
+        validator = new PasswordValidatorImpl();
+    }
+
 
     public PasswordValidatorImplTest() {
     }
@@ -32,12 +37,9 @@ public class PasswordValidatorImplTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        getPasswordVallidaator();
+        getPasswordValidaator();
     }
 
-    protected void getPasswordVallidaator() {
-        validator = new PasswordValidatorImpl();
-    }
     
 
     @org.junit.After

@@ -17,8 +17,12 @@ import static org.junit.Assert.*;
  */
 public class UsernameValidatorImplTest {
 
-    private UsernameValidator validator;
+    protected UsernameValidator validator;
 
+    protected void getUsernameValidator(){
+        validator = new UsernameValidatorImpl();
+    }
+    
     public UsernameValidatorImplTest() {
     }
 
@@ -32,7 +36,7 @@ public class UsernameValidatorImplTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-        validator = new UsernameValidatorImpl();
+        getUsernameValidator();
     }
 
     @org.junit.After

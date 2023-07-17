@@ -4,7 +4,7 @@
  */
 package com.mycompany.eurofootball.services;
 
-import com.mycompany.eurofootball.dto.UserRegistrationDto;
+import com.mycompany.eurofootball.dto.UserLoginDto;
 import com.mycompany.eurofootball.validators.PasswordValidator;
 import com.mycompany.eurofootball.validators.UsernameValidator;
 import org.junit.After;
@@ -19,89 +19,99 @@ import org.mockito.MockitoAnnotations;
 
 /**
  *
- * @author calmin
+ * @author Kraine
  */
-public class UserRegistrationServiceImplTest {
 
+
+public class UserLoginServiceImplTest {
+    
     @Mock
     private UsernameValidator usernameValidator;
     @Mock
     private PasswordValidator passwordValidator;
-
-    private UserRegistrationDto userRegistration = new UserRegistrationDto();
-
-    public UserRegistrationServiceImplTest() {
+    
+    private UserLoginDto userLogin = new UserLoginDto();
+ 
+    public UserLoginServiceImplTest() {
     }
-
+    
     @BeforeClass
     public static void setUpClass() {
+        
     }
-
+    
     @AfterClass
     public static void tearDownClass() {
     }
-
+    
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
-
+    
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of registerUser method, of class UserRegistrationServiceImpl.
+     * Test of loginUser method, of class UserLoginServiceImpl.
      */
     @Test
-    public void testRegisterUser() {
-        System.out.println("registerUser");
-
+    public void testLoginUser() {
+        System.out.println("loginUser");
+        
+//        using Mokito to mock username and password
         Mockito.when(usernameValidator.validateUsername(Mockito.any())).thenReturn(Boolean.TRUE);
         Mockito.when(passwordValidator.validatePassword(Mockito.any())).thenReturn(Boolean.TRUE);
-
-        UserRegistrationServiceImpl instance = new UserRegistrationServiceImpl(usernameValidator, passwordValidator);
+        
+        UserLoginServiceImpl instance = new UserLoginServiceImpl(usernameValidator, passwordValidator);
         boolean expResult = true;
-        boolean result = instance.registerUser(userRegistration);
-        assertEquals(expResult, result); //test fails when expResult is not equal to result
+        boolean result = instance.loginUser(userLogin);
+        assertEquals(expResult, result);
+       
     }
-
+    
     @Test
-    public void testRegisterUserInvalidUserName() {
-        System.out.println("registerUserInvalidUsername");
-
+    public void testLoginUserInvalidUsername() {
+        System.out.println("loginUserInvalidUsername");
+        
+//        using Mokito to mock username and password
         Mockito.when(usernameValidator.validateUsername(Mockito.any())).thenReturn(Boolean.FALSE);
         Mockito.when(passwordValidator.validatePassword(Mockito.any())).thenReturn(Boolean.TRUE);
-
-        UserRegistrationServiceImpl instance = new UserRegistrationServiceImpl(usernameValidator, passwordValidator);
+        
+        UserLoginServiceImpl instance = new UserLoginServiceImpl(usernameValidator, passwordValidator);
         boolean expResult = false;
-        boolean result = instance.registerUser(userRegistration);
+        boolean result = instance.loginUser(userLogin);
         assertEquals(expResult, result);
+       
     }
-
+    
     @Test
-    public void testRegisterUserInvalidPassword() {
-        System.out.println("registerUserInvalidPassword");
-
+    public void testLoginUserInvalidPassword() {
+        System.out.println("loginUserInvalidPassword");
+        
+//        using Mokito to mock username and password
         Mockito.when(usernameValidator.validateUsername(Mockito.any())).thenReturn(Boolean.TRUE);
         Mockito.when(passwordValidator.validatePassword(Mockito.any())).thenReturn(Boolean.FALSE);
-
-        UserRegistrationServiceImpl instance = new UserRegistrationServiceImpl(usernameValidator, passwordValidator);
+        
+        UserLoginServiceImpl instance = new UserLoginServiceImpl(usernameValidator, passwordValidator);
         boolean expResult = false;
-        boolean result = instance.registerUser(userRegistration);
+        boolean result = instance.loginUser(userLogin);
         assertEquals(expResult, result);
+       
     }
-
+    
     @Test
-    public void testRegisterUserInvalidPasswordAndUsername() {
-        System.out.println("registerUserInvalidPasswordAndUsername");
-
+    public void testLoginUserInvalidUsernameAndPassword() {
+        System.out.println("loginUserInvalidUsernameAndPassword");
+        
+//        using Mokito to mock username and password
         Mockito.when(usernameValidator.validateUsername(Mockito.any())).thenReturn(Boolean.FALSE);
         Mockito.when(passwordValidator.validatePassword(Mockito.any())).thenReturn(Boolean.FALSE);
-
-        UserRegistrationServiceImpl instance = new UserRegistrationServiceImpl(usernameValidator, passwordValidator);
+        
+        UserLoginServiceImpl instance = new UserLoginServiceImpl(usernameValidator, passwordValidator);
         boolean expResult = false;
-        boolean result = instance.registerUser(userRegistration);
+        boolean result = instance.loginUser(userLogin);
         assertEquals(expResult, result);
     }
 }

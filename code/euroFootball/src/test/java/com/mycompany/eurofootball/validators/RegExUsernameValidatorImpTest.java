@@ -6,12 +6,12 @@ package com.mycompany.eurofootball.validators;
 
 /**
  *
- * @author calmin
+ * @author Kraine
  */
-public class RegExPasswordValidatorImplTest extends PasswordValidatorImplTest {
-
+public class RegExUsernameValidatorImpTest extends UsernameValidatorImplTest{
+    
     @Override
-    protected void getPasswordValidaator() {
-        validator = new RegExPasswordValidatorImpl();
+    protected void getUsernameValidator(){
+        validator = new RegExUsernameValidatorImp();
     }
 }
