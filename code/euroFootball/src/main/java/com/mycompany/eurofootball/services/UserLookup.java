@@ -11,7 +11,6 @@ import com.mycompany.eurofootball.models.User;
  *
  * @author Kraine
  */
-public interface UserLoginService {
-    User loginUser(UserLoginDto userLogin) throws Exception;
-    
+public interface UserLookup {
+    public User getUser(UserLoginDto user);    
 }
