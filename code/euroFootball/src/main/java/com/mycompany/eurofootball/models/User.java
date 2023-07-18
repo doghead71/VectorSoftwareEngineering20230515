@@ -25,6 +25,10 @@ public class User extends BaseModel<User> {
 
 //    constructors
     
+    public User(){
+        
+    }
+    
     public User(String username, String firstName, String lastName, String email, String password, Boolean isAdmin) {
         this.username = username;
         this.firstName = firstName;
