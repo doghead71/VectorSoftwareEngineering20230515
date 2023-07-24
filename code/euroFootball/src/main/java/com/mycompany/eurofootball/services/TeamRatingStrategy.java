@@ -11,6 +11,9 @@ import java.util.Random;
 /**
  *
  * @author Kraine
+ * 
+ * This strategy give an advantage to the team with the higher rating
+ * 
  */
 public class TeamRatingStrategy implements GameStrategy {
     
@@ -18,6 +21,8 @@ public class TeamRatingStrategy implements GameStrategy {
 //    relative to the opponent's strength
     private double matchRatingHome;
     private double matchRatingAway;
+    private int homeTeamScore;
+    private int awayTeamScore;
     
     private FootballTeam homeTeam = new FootballTeam();
     private FootballTeam awayTeam = new FootballTeam();
@@ -29,8 +34,8 @@ public class TeamRatingStrategy implements GameStrategy {
         
         int homeTeamGoals = goalsScored(homeTeam.getTeamRating());
         int awayTeamGoals = goalsScored(awayTeam.getTeamRating());  
-        match.setHomeTeamScore(homeTeamGoals);
-        match.setAwayTeamScore(awayTeamGoals);
+        setHomeTeamScore(homeTeamGoals);
+        setAwayTeamScore(awayTeamGoals);
     }
     
     //generate random number
@@ -40,24 +45,49 @@ public class TeamRatingStrategy implements GameStrategy {
         return randomNumber;
     }
     
-     // set match rating for teams
+     // getters and setters
     public void setMatchRatingHome(double teamRating, double opponentRating){
         matchRatingHome = teamRating / (teamRating + opponentRating);
     }
+
+    public double getMatchRatingHome() {
+        return matchRatingHome;
+    }
+    
     
     public void setMatchRatingAway(double teamRating, double opponentRating){
         matchRatingAway = teamRating / (teamRating + opponentRating);
     }
+
+    public double getMatchRatingAway() {
+        return matchRatingAway;
+    }
+
+    public int getHomeTeamScore() {
+        return homeTeamScore;
+    }
+
+    public void setHomeTeamScore(int homeTeamScore) {
+        this.homeTeamScore = homeTeamScore;
+    }
+
+    public int getAwayTeamScore() {
+        return awayTeamScore;
+    }
+
+    public void setAwayTeamScore(int awayTeamScore) {
+        this.awayTeamScore = awayTeamScore;
+    }
     
     
-//    total shots is a random number between 5 and 25 multiplied by the team's match rating.
+//  Total shots is a random number between 5 and 25 multiplied by the team's match rating.
     protected int totalShots(double matchRating){
         return (int) (getRandomNumber(5,25) * matchRating);
     }
     
     
     protected int attemptShot(){
-//        A goal is scored when attempt == goal
+//  A goal is scored when attempt == goal
         int score= 0;
         int attempt = getRandomNumber(1,5);
         int goal = getRandomNumber(1,5);
@@ -66,7 +96,7 @@ public class TeamRatingStrategy implements GameStrategy {
     }
     
     
-//    executes the generated number of shots and records how many resulted in goals
+//  Executes the generated number of total shots and records how many resulted in goals
     public int goalsScored(double matchRating){
         int goals = 0;
         for(int i = 1;i<=totalShots(matchRating);i++){
