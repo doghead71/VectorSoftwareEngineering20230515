@@ -18,6 +18,10 @@ public class FootballTeam extends BaseModel<FootballTeam>{
     private double defense;
     private double teamRating;
 
+    public FootballTeam() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     @Override
     public FootballTeam deepClone() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
