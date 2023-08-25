@@ -31,37 +31,9 @@ public class UserLoginServiceImpl implements UserLoginService{
         if(retrievedUser == null){
             throw new Exception("User not found.");
         }
-        
+        retrievedUser.setPassword("");
         return retrievedUser;
     }
-    
-    
-    
-//    private UsernameValidator _usernameValidator;
-//    private PasswordValidator _passwordValidator;
-//
-//    public UserLoginServiceImpl(UsernameValidator usernameValidator, PasswordValidator passwordValidator){
-////        constructor accepts interfaces as arguments to allow different implementations
-//        this._passwordValidator = passwordValidator;
-//        this._usernameValidator = usernameValidator;
-//    }
-//    
-//    @Override
-//    public boolean loginUser(UserLoginDto userLogin) {
-////        validate username
-//        if(!_usernameValidator.validateUsername(userLogin.getUsername())){
-//            System.out.println("Invalid username.");
-//            return false;
-//        }
-////        validate password
-//        if(!_passwordValidator.validatePassword(userLogin.getPassword())){
-//            System.out.println("Invalid password.");
-//            return false;
-//        }
-//        //TO DO - grant access
-//        return true;
-//    }
-    
     
     
 }
