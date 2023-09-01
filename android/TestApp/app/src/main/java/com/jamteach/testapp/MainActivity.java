@@ -62,6 +62,24 @@ public class MainActivity extends AppCompatActivity {
         setupButtonPicNew();
         setupButtonFragment();
         setupButtonContextMenu();
+        setupButtonPreference();
+        setupButtonPreferenceNew();
+    }
+
+    private void setupButtonPreferenceNew() {
+        Button buttonFragment = findViewById(R.id.buttonPreferenceNew);
+        buttonFragment.setOnClickListener(view -> {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void setupButtonPreference() {
+        Button buttonFragment = findViewById(R.id.buttonPreference);
+        buttonFragment.setOnClickListener(view -> {
+            Intent intent = new Intent(this, AppPreferenceActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setupButtonContextMenu() {
