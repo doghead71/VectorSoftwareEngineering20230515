@@ -64,8 +64,16 @@ public class MainActivity extends AppCompatActivity {
         setupButtonContextMenu();
         setupButtonPreference();
         setupButtonPreferenceNew();
+        setupButtonFilesDemo();
     }
 
+    private void setupButtonFilesDemo() {
+        Button buttonFiles = findViewById(R.id.buttonFiles);
+        buttonFiles.setOnClickListener(view -> {
+            Intent intent = new Intent(this, FilesDemo.class);
+            startActivity(intent);
+        });
+    }
     private void setupButtonPreferenceNew() {
         Button buttonFragment = findViewById(R.id.buttonPreferenceNew);
         buttonFragment.setOnClickListener(view -> {
