@@ -44,8 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Context Menu"
-        app:layout_constraintTop_toBottomOf="@id/buttonShare"
-        app:layout_constraintLeft_toRightOf="@id/buttonFragment"/>
+        app:layout_constraintLeft_toRightOf="@id/buttonFragment"
+        app:layout_constraintTop_toBottomOf="@id/buttonShare" />
     <Button
         android:id="@+id/buttonPreference"
         android:layout_width="wrap_content"
@@ -59,8 +59,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Preferences"
-        app:layout_constraintTop_toBottomOf="@id/buttonFragment"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonFragment" />
+
+    <Button
+        android:id="@+id/buttonTestDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Test DB"
+        app:layout_constraintLeft_toRightOf="@+id/buttonPreferenceNew"
+        app:layout_constraintTop_toBottomOf="@+id/buttonContextMenu" />
 
     <ImageView
         android:id="@+id/img"
@@ -79,7 +87,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/img" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

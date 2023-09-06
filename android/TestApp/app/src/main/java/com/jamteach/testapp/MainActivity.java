@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import databases.DBAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -64,6 +67,56 @@ public class MainActivity extends AppCompatActivity {
         setupButtonContextMenu();
         setupButtonPreference();
         setupButtonPreferenceNew();
+        setupButtonTestDB();
+    }
+
+    private void setupButtonTestDB(){
+        Button buttonTestDB = findViewById(R.id.buttonTestDB);
+        buttonTestDB.setOnClickListener(view -> {
+            DBAdapter db = new DBAdapter(this);
+            db.open();
+            db.insertUser("test","test123", "test@test.com");
+            Cursor cursor = db.findUser("test");
+            if(cursor != null){
+                showUser(cursor);
+                cursor.close();
+            }
+            db.close();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            db.open();
+            if(db.updateUser("test", "test12345","tester@tester.net")){
+                Cursor ucursor = db.findUser("test");
+                if(ucursor != null){
+                    showUser(ucursor);
+                }
+                ucursor.close();
+            }
+            db.close();
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            db.open();
+            if( db.deleteUser("test")){
+                Toast.makeText(this,"Deleted user", Toast.LENGTH_LONG);
+            }
+            db.close();
+        });
+    }
+
+    private void showUser(Cursor cursor) {
+        String displayText = "{" + "\n"
+                + "username: " + cursor.getString(0) + "\n"
+                +"password: " + cursor.getString(1) + "\n"
+                + "email: " + cursor.getString(2) + "\n" + "}";
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(displayText);
+        Toast.makeText(this, displayText,Toast.LENGTH_LONG).show();
     }
 
     private void setupButtonPreferenceNew() {
