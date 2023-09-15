@@ -11,7 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -22,6 +25,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.net.ssl.HttpsURLConnection;
 
 import databases.DBAdapter;
 
@@ -68,6 +79,53 @@ public class MainActivity extends AppCompatActivity {
         setupButtonPreference();
         setupButtonPreferenceNew();
         setupButtonTestDB();
+        setupButtonTestUrl();
+    }
+
+    private InputStream openHttpsConnection(String urlString){
+        InputStream in = null;
+        int response = -1;
+        try {
+            java.net.URL url = new URL(urlString);
+            URLConnection connection = url.openConnection();
+            if(!(connection instanceof HttpsURLConnection)){
+                throw new IOException("Not an HTTPs connection");
+            }
+            HttpsURLConnection httpsConn = (HttpsURLConnection) connection;
+            httpsConn.setAllowUserInteraction(false);
+            httpsConn.setInstanceFollowRedirects(true);
+            httpsConn.setRequestMethod("GET");
+            httpsConn.connect();
+            response = httpsConn.getResponseCode();
+            if(response == HttpsURLConnection.HTTP_OK){
+                in = httpsConn.getInputStream();
+            }
+        }catch (Exception ex){
+            Log.d("Network-TEST", "MSG-".concat(ex.getMessage()));
+        }
+        return in; // remember this can be null
+    }
+
+    private Bitmap downloadImage(String url){
+        Bitmap bitmap = null;
+        InputStream in = null;
+        try {
+            in = openHttpsConnection(url);
+            bitmap = BitmapFactory.decodeStream(in);
+            in.close();
+        }catch (Exception ex){
+            Log.d("Network-TEST","MSG-".concat(ex.getMessage()) );
+        }
+        return bitmap;
+    }
+
+
+    private void setupButtonTestUrl(){
+        Button buttonTestUrl = findViewById(R.id.buttonTestURL);
+        buttonTestUrl.setOnClickListener(view -> {
+            String url = "https://jamaica-gleaner.com/sites/default/files/styles/jg_article_image/public/media/article_images/2023/09/14/captured.jpg?itok=LuCcsPG-";
+            new DownloadImageTask().execute(url);
+        });
     }
 
     private void setupButtonTestDB(){
@@ -271,5 +329,18 @@ public class MainActivity extends AppCompatActivity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
          super.onContextItemSelected(item);
         return onMenuChoice(item);
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap>{
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            return downloadImage(strings[0]);
+        }
+        @Override
+        protected  void onPostExecute(Bitmap result){
+            ImageView imageView = findViewById(R.id.img);
+            imageView.setImageBitmap(result);
+        }
     }
 }
