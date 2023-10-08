@@ -4,6 +4,8 @@
  */
 package com.mycompany.eurofootball.models;
 
+import java.util.Objects;
+
 /**
  *
  * @author calmin
@@ -21,4 +23,27 @@ public abstract class BaseModel<T extends BaseModel<T>> {
     }
     
     public abstract T deepClone();
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final BaseModel<?> other = (BaseModel<?>) obj;
+        return Objects.equals(this.universalIdentifier, other.universalIdentifier);
+    }
+    
+    
 }
